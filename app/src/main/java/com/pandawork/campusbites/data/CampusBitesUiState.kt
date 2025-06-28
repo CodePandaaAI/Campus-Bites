@@ -9,4 +9,8 @@ data class CampusBitesUiState(
     val selectedMenuItems: Map<String, OrderItem> = emptyMap(),
     val isLoading: Boolean = false,
     val errorMessage: String? = null
-)
+) {
+    val totalPrice: Double = selectedMenuItems.values.sumOf { orderItem ->
+        orderItem.menuItem.price * orderItem.quantity
+    }
+}
